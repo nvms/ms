@@ -49,6 +49,7 @@ describe("ms", () => {
       expect(ms("10seconds")).toBe(10000)
 
       expect(ms("5m")).toBe(300000)
+      expect(ms("5mn")).toBe(300000)
       expect(ms("5min")).toBe(300000)
       expect(ms("5mins")).toBe(300000)
       expect(ms("5minute")).toBe(300000)
@@ -77,6 +78,17 @@ describe("ms", () => {
       expect(ms("60m", { unit: "h" })).toBe(1)
       expect(ms("24h", { unit: "d" })).toBe(1)
       expect(ms("7d", { unit: "w" })).toBe(1)
+    })
+
+    it("should convert using unit aliases as output", () => {
+      expect(ms("60s", { unit: "min" })).toBe(1)
+      expect(ms("60s", { unit: "mins" })).toBe(1)
+      expect(ms("60s", { unit: "minute" })).toBe(1)
+      expect(ms("2h", { unit: "hr" })).toBe(2)
+      expect(ms("2h", { unit: "hrs" })).toBe(2)
+      expect(ms("7d", { unit: "wk" })).toBe(1)
+      expect(ms("1d", { unit: "day" })).toBe(1)
+      expect(ms("1000ms", { unit: "sec" })).toBe(1)
     })
   })
 
@@ -132,6 +144,11 @@ describe("ms", () => {
     it("should handle very small decimal values", () => {
       expect(ms("0.001s")).toBe(1)
       expect(ms("0.0001s", { round: false })).toBe(0.1)
+    })
+
+    it("should handle decimals in compound expressions", () => {
+      expect(ms("1.5h 30.5m")).toBe(7230000)
+      expect(ms("0.5d 6h")).toBe(64800000)
     })
 
     it("should handle mixed case units", () => {
