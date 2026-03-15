@@ -1,4 +1,8 @@
-# @prsm/ms
+<p align="center">
+  <img src=".github/logo.svg" width="80" height="80" alt="ms logo">
+</p>
+
+<h1 align="center">@prsm/ms</h1>
 
 Parse and convert time strings to milliseconds. Zero dependencies.
 
