@@ -4,7 +4,7 @@
 
 <h1 align="center">@prsm/ms</h1>
 
-Parse and convert time strings to milliseconds. Zero dependencies.
+Parse and convert time strings to milliseconds.
 
 ## Installation
 
